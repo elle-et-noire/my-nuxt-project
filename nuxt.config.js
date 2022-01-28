@@ -41,6 +41,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -76,5 +77,23 @@ export default {
 
   generate: {
     dir: 'docs'
+  },
+  script: [
+    {
+      src:
+        'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.min.js?config=TeX-AMS_HTML'
+    }
+  ],
+  markdownit: {
+    injected: true, // $mdを利用してmarkdownをhtmlにレンダリングする
+    breaks: true, // 改行コードに変換する
+    html: true, // HTML タグを有効にする
+    linkify: true, // URLに似たテキストをリンクに自動変換する
+    typography: true, // 言語に依存しないきれいな 置換 + 引用符 を有効にします。
+    // use: [
+    //   // 'markdown-it-mathjax',
+    //   'markdown-it-container',
+    //   'markdown-it-attrs'
+    // ]
   },
 }
